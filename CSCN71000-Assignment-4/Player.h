@@ -24,3 +24,4 @@ Guess GetPlayerGuess(int);
 void IncrementInvalidGuesses(void);
 bool MaxAllowedGuesses(void);
 void UpdateGuesses(int);
+void DisplayPreviousGuesses(void);

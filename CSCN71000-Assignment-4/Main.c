@@ -13,6 +13,8 @@ int main(void)
     {
         printf("Incorrect guesses: %d\n", Invalid_Guesses);
 
+        DisplayPreviousGuesses();
+
         Guess guess = GetPlayerGuess(mystery_number);
 
         if (guess == Equal) return 0; // Quits if the guess is equal to the mystery number.
@@ -20,6 +22,8 @@ int main(void)
         IncrementInvalidGuesses();
         printf("\n");
     } while (!MaxAllowedGuesses());
+
+    printf("You lose.\n");
 
     return 0;
 }

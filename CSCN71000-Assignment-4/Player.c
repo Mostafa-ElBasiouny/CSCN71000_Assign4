@@ -100,3 +100,19 @@ void UpdateGuesses(int guess)
 	Guesses_List[Guesses_List_Count] = guess;
 	Guesses_List_Count++;
 }
+
+// Displays previous guesses.
+void DisplayPreviousGuesses(void)
+{
+	printf("Previous guesses:");
+
+	for (int i = 0; i < MAX_GUESSES; i++)
+	{
+		if (Guesses_List[i] == -1) printf(" _");
+		else if (Guesses_List[i] == 0) printf(" X");
+		else printf(" %d", Guesses_List[i]);
+
+		if (i < MAX_GUESSES - 1) printf(", ");
+		else printf("\n");
+	}
+}
