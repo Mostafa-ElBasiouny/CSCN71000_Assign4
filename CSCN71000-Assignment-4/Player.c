@@ -29,3 +29,43 @@ int GetMysteryNumber(void)
 
 	return 0; // Returns zero if the mystery number is invalid.
 }
+
+// Allows the player to enter his guess.
+// Returns an enumerator based on the guess.
+Guess GetPlayerGuess(int mystery_number)
+{
+	int guess = 0;
+
+	printf("Enter the guess from 1 to 1000 (inclusive): ");
+	int result = scanf("%d", &guess);
+
+	if (result == 1 // Checks if scanf successfully matched a number.
+		&& getchar() == '\n' // Checks if stdin does not contain any trailing characters.
+		&& guess >= 1 // Checks if the guess is greater than or equal to one.
+		&& guess <= 1000) // Checks if the guess is less than or equal to one thousand.
+	{
+		if (guess < mystery_number)
+		{
+			printf("The guess is too low.\n");
+			UpdateGuesses(guess);
+			return Lower;
+		}
+		else if (guess == mystery_number)
+		{
+			printf("You win.\n");
+			return Equal;
+		}
+		else
+		{
+			printf("The guess is too high.\n");
+			UpdateGuesses(guess);
+			return Greater;
+		}
+	}
+
+	if (result != 1) while (getchar() != '\n'); // Clears stdin.
+	printf("Invalid guess, not a number or out of range.\n");
+	UpdateGuesses(Invalid);
+
+	return Invalid;
+}
