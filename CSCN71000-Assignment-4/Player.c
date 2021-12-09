@@ -56,7 +56,7 @@ Guess GetPlayerGuess(int mystery_number)
 		}
 		else if (guess == mystery_number)
 		{
-			printf("You win.\n");
+			printf("\nYou win.\n");
 			return Equal;
 		}
 		else
