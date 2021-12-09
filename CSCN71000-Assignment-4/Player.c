@@ -1,5 +1,9 @@
 #include "player.h"
 
+int Invalid_Guesses = 0;
+int Guesses_List[MAX_GUESSES] = { -1, -1, -1, -1, -1, -1 }; // Initialize with negative one to differentiate between invalid and empty elements.
+int Guesses_List_Count = 0;
+
 // Allows the player to set the mystery number.
 // Returns the mystery number if valid, otherwise zero.
 int GetMysteryNumber(void)
@@ -68,4 +72,31 @@ Guess GetPlayerGuess(int mystery_number)
 	UpdateGuesses(Invalid);
 
 	return Invalid;
+}
+
+// Increments the invalid guesses counter.
+void IncrementInvalidGuesses(void)
+{
+	Invalid_Guesses++;
+}
+
+// Checks if the maximum allowed guesses is reached.
+// Returns true if reached, otherwise false.
+bool MaxAllowedGuesses(void)
+{
+	if (Invalid_Guesses < MAX_GUESSES)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
+// Appends guess to guesses list.
+void UpdateGuesses(int guess)
+{
+	Guesses_List[Guesses_List_Count] = guess;
+	Guesses_List_Count++;
 }
